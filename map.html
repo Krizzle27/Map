@@ -1,0 +1,210 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBacf-yGvhzUPn4NA8QQrUHcX_4FG5yNM&content_copy&callback=initMap"></script>
+    <title>Map</title>
+    <style>
+        #map {
+            height: 100%;
+            width: 100%;
+            -webkit-box-shadow: 12px 29px 81px 0px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: 12px 29px 81px 0px rgba(0, 0, 0, 0.75);
+            box-shadow: 12px 29px 81px 0px rgba(0, 0, 0, 0.75);
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .infoImage {
+            max-height: 100px;
+            max-width: 100px;
+        }
+
+        .certImage {
+            max-height: 25px;
+            max-width: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map">
+
+        <script>
+
+            function initMap() {
+                
+
+                var places = [
+                    {
+                        title: "Disney World",
+                        info: '<strong>Disney World</strong><br><a href="https://disneyworld.disney.go.com/guest-services/guests-with-disabilities/">Services</a><br><img class="infoImage" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Cinderella_Castle_at_Magic_Kingdom.jpg/362px-Cinderella_Castle_at_Magic_Kingdom.jpg">',
+                        lat: 28.3852,
+                        lng: -81.5639,
+                        activity: "attraction",
+                        icon: "arts"
+                    },
+                    {
+                        title: "Houston Space Center",
+                        info: '<strong>Houston Space Center</strong><img class="certImage" src="https://2r4f6n4e7g9rozcnbkdgp9iv-wpengine.netdna-ssl.com/wp-content/uploads/2016/01/CAC-300x300.png"><br><a href="https://spacecenter.org/accessibility-options/#sensory">Sensory Friendly Evenings</a><br><img class="infoImage" src="http://www.roamingrobert.com/wp-content/uploads/2016/04/Space-Center-Houston.png">',
+                        lat: 29.7604,
+                        lng: -95.3698,
+                        activity: "attraction",
+                        icon: "arts"
+                    },
+                    {
+                        title: "Santa Barbara Zoo",
+                        info: '<strong>Santa Barbara Zoo</strong><img class="certImage" src="https://2r4f6n4e7g9rozcnbkdgp9iv-wpengine.netdna-ssl.com/wp-content/uploads/2016/01/CAC-300x300.png"><br><a href="https://www.sbzoo.org/visit/">Website</a><br><img class="infoImage" src="https://montco.today/wp-content/uploads/sites/2/2017/12/EPZ-giraffe.jpg">',
+                        lat: 34.4204,
+                        lng: -119.6664,
+                        activity: "attraction",
+                        icon: "arts"
+                    },
+                    {
+                        title: "Elmwood Park Zoo",
+                        info: '<strong>Elmwood Park Zoo</strong><img class="certImage" src="https://2r4f6n4e7g9rozcnbkdgp9iv-wpengine.netdna-ssl.com/wp-content/uploads/2016/01/CAC-300x300.png"><br><a href="http://www.elmwoodparkzoo.org/amenities-and-accessibility.php">Services</a><br><img class="infoImage" src="https://www.sbramada.com/resourcefiles/mainimages/santa-barbara-zoo-at-california-top.jpg">',
+                        lat: 42.002707,
+                        lng: -87.661236,
+                        activity: "attraction",
+                        icon: "arts"
+
+                    },
+                    {
+                        title: "Sesame Place",
+                        info: '<strong>Sesame Place</strong><img class="certImage" src="https://2r4f6n4e7g9rozcnbkdgp9iv-wpengine.netdna-ssl.com/wp-content/uploads/2016/01/CAC-300x300.png"><br><a href="https://sesameplace.com/philadelphia/help/accessibility-guide/">Services</a><br><img class="infoImage" src="http://www.globetrottingmommy.com/wp-content/uploads/the-counts-splash-castle-at-sesame-place-999x1024.jpg">',
+                        lat: 40.1842,
+                        lng: -74.8722,
+                        activity: "attraction",
+                        icon: "arts"
+                    },
+                    {
+                        title: "Georgia Aquarium",
+                        info: '<strong>Georgia Aquarium</strong><img class="certImage" src="https://2r4f6n4e7g9rozcnbkdgp9iv-wpengine.netdna-ssl.com/wp-content/uploads/2016/01/CAC-300x300.png"><br><a href="https://www.georgiaaquarium.org/experience/visit/plan-your-visit/accessibility">Services</a><br><img class="infoImage" src="https://res.cloudinary.com/simpleview/image/fetch/c_limit,f_auto,q_75,w_1200/https://res.cloudinary.com/simpleview/image/upload/crm/sandysprings/PWP_5515-listing-68b98ca25056b3a_68b99193-5056-b3a8-49c41e9fb73e2c6e.jpg">',
+                        lat: 33.7634,
+                        long: -84.3951,
+                        activity: "attraction",
+                        icon: "arts"
+                    },
+                    {
+                        title: "Colonial Quarters Tour",
+                        info: '<strong>Colonial Quarters Tour</strong><img class="certImage" src="https://2r4f6n4e7g9rozcnbkdgp9iv-wpengine.netdna-ssl.com/wp-content/uploads/2016/01/CAC-300x300.png"><br><a href="http://www.colonialquarter.com/">Website</a><br><img class="infoImage" src="https://i.pinimg.com/originals/aa/ca/9e/aaca9e3d4a5a012d70f7ba734b736c5c.jpg">',
+                        lat: 29.9012,
+                        lng: -81.3124,
+                        activity: "attraction",
+                        icon: "arts"
+                    },
+                    {
+                        title: "EdVenture",
+                        info: '<strong>EdVenture</strong><img class="certImage" src="https://2r4f6n4e7g9rozcnbkdgp9iv-wpengine.netdna-ssl.com/wp-content/uploads/2016/01/CAC-300x300.png"><br><a href="http://www.edventure.org/programs">Services</a><br><img class="infoImage" src="https://pbs.twimg.com/profile_images/793165529821356040/2HE1a2fS_400x400.jpg">',
+                        lat: 34.0007,
+                        lng: -81.0348,
+                        activity: "attraction",
+                        icon: "arts"
+                    },
+                    {
+                        title: "Sheraton Park Anaheim",
+                        info: '<strong>Sheraton Park Anaheim</strong><img class="certImage" src="https://2r4f6n4e7g9rozcnbkdgp9iv-wpengine.netdna-ssl.com/wp-content/uploads/2016/01/CAC-300x300.png"><br><a href="http://www.sheratonparkanaheim.com/rooms">Website</a><br><img class="infoImage" src="http://www.anaheimblog.net/wp-content/uploads/2017/08/sheraton-park-AB-feat.jpg">',
+                        lat: 33.8016,
+                        lng: -117.9165,
+                        activity: "lodging",
+                        icon: "lodging"
+                    },
+                    {
+                        title: "Crowne Plaza Tampa Westshore",
+                        info: '<strong>Crowne Plaza Tampa Westshore</strong><img class="certImage" src="https://2r4f6n4e7g9rozcnbkdgp9iv-wpengine.netdna-ssl.com/wp-content/uploads/2016/01/CAC-300x300.png"><br><a href="https://www.cptampawestshore.com/">Website</a><br><img class="infoImage" src="https://assets.hospitalityonline.com/photos/employers/237740/310990_l.jpg">',
+                        lat: 27.9454,
+                        lng: -82.5330,
+                        activity: "lodging",
+                        icon: "lodging"
+                    },
+                    {
+                        title: "Beaches Resorts Ocho Rios, Jamaica",
+                        info: '<strong>Beaches Resorts Ocho Rios, Jamaica</strong><img class="certImage" src="https://2r4f6n4e7g9rozcnbkdgp9iv-wpengine.netdna-ssl.com/wp-content/uploads/2016/01/CAC-300x300.png"><br><a href="http://www.beaches.com/autism-friendly-resorts/">Autism Friendly Kids Camp</a><br><img class="infoImage" src="http://www.visitjamaica.com/Media/Default/Gallery/Vendors/Beaches%20Ocho%20Rios/bbo-01.jpg">',
+                        lat: 18.4050,
+                        lng: -76.9801,
+                        activity: "beach",
+                        icon: "swimming"
+                    },
+                    {
+                        title: "Beaches Resorts Turks and Caicos",
+                        info: '<strong>Beaches Resorts Turks and Caicos</strong><img class="certImage" src="https://2r4f6n4e7g9rozcnbkdgp9iv-wpengine.netdna-ssl.com/wp-content/uploads/2016/01/CAC-300x300.png"><br><a href="http://www.beaches.com/autism-friendly-resorts/">Autism Friendly Kids Camp</a><br><img class="infoImage" src="http://www.destination360.com/caribbean/images/s/beaches-resort.jpg">',
+                        lat: 21.7876,
+                        lng: -72.1970,
+                        activity: "beach",
+                        icon: "swimming"
+                    },
+                    {
+                        title: "Beaches Resorts Negril, Jamaica",
+                        info: '<strong>Beaches Resorts Negril, Jamaica</strong><img class="certImage" src="https://2r4f6n4e7g9rozcnbkdgp9iv-wpengine.netdna-ssl.com/wp-content/uploads/2016/01/CAC-300x300.png"><br><a href="http://www.beaches.com/autism-friendly-resorts/">Autism Friendly Kids Camp</a><br><img class="infoImage" src="http://cdn.sandals.com/beaches/v11/slideshows/resorts/bng/homeTopSlider/7.jpg">',
+                        lat: 18.3140,
+                        lng: -78.3371,
+                        activity: "beach",
+                        icon: "swimming"
+                    },
+                    {
+                        title: "Tradewinds Island Resorts",
+                        info: '<strong>Tradewinds Island Resorts</strong><img class="certImage" src="https://2r4f6n4e7g9rozcnbkdgp9iv-wpengine.netdna-ssl.com/wp-content/uploads/2016/01/CAC-300x300.png"><br><a href="https://www.tradewindsresort.com/explore/kids-activities/special-needs-friendly">Services</a><br><img class="infoImage" src="https://media-cdn.tripadvisor.com/media/photo-s/0d/cf/46/ee/tradewinds-island-grand.jpg">',
+                        lat: 27.7295,
+                        lng: -82.7438,
+                        activity: "beach",
+                        icon: "swimming"
+                    },
+                    {
+                        title: "St Petersburg Beach",
+                        info: '<strong>St Petersburg Beach</strong><img class="certImage" src="https://2r4f6n4e7g9rozcnbkdgp9iv-wpengine.netdna-ssl.com/wp-content/uploads/2016/01/CAC-300x300.png"><br><a href="https://www.visitstpeteclearwater.com/communities/st-pete-beach">Website</a><br><img class="infoImage" src="https://www.kimptonhotels.com/blog/wp-content/uploads/2016/08/st-pete-beach-130d8cc5.jpg">',
+                        lat: 27.7428,
+                        lng: -82.7505,
+                        activity: "beach",
+                        icon: "swimming"
+                    }
+                ]
+
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 4,
+                    center: new google.maps.LatLng(39.8283, -98.5795),
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                });
+
+                var shape = {
+                    coords: [1, 1, 1, 20, 18, 20, 18, 1],
+                    type: 'poly'
+                };
+
+                // Shapes define the clickable region of the icon. The type defines an HTML
+                // <area> element 'poly' which traces out a polygon as a series of X,Y points.
+                // The final coordinate closes the poly by connecting to the first coordinate.
+                for (var i = 0; i < places.length; i++) {
+                    var marker = new google.maps.Marker({
+                        position: { lat: places[i].lat, lng: places[i].lng },
+                        map: map,
+                        icon: {
+                            url: 'https://maps.google.com/mapfiles/kml/shapes/' + places[i].icon + '.png',
+                            // This marker is 20 pixels wide by 32 pixels high.
+                            scaledSize: new google.maps.Size(25, 25),
+                            // The origin for this image is (0, 0).
+                            origin: new google.maps.Point(0, 0),
+                            // The anchor for this image is the base of the flagpole at (0, 32).
+                            anchor: new google.maps.Point(0, 0)
+                        },
+                        shape: shape,
+                        title: places[i].title
+                    });
+
+                    var infoWindow = new google.maps.InfoWindow({});
+
+                    google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                        return function () {
+                            infoWindow.setContent(places[i].info);
+                            infoWindow.open(map, marker);
+                        }
+                    })(marker, i));
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>
